@@ -5,7 +5,8 @@ const rl = createInterface({
     output:process.stdout
 })
 
-rl.question('文字列を入力してください：',(line) => {
-    console.log(`${line}が入力されました。`);
+rl.question('数値を入力してください：',(line) => {
+    const num : number = Number(line);
+    console.log(1000+num);
     rl.close();
 })
