@@ -1,35 +1,33 @@
-type Family<Parent,Child> = {
+type Animal = {
+    name:string
+}
+
+type Human = {
+    name:string,
+    age :number
+}
+
+type Family<Parent = Animal,Child = Animal> = {
     mother:Parent,
     father:Parent,
     child:Child
 }
 
-//型を引数みたいにできる、高度な抽象化の際に使われる
+type S = Family<string,Human>
+type T = Family
+type U = Family<Human>
+//今んとこ右側だけを指定するとかはできない
 
-const obj : Family<number,string> = {
-    mother : 1,
-    father : 2,
-    child : ''
+type t = number[]
+
+const arr2 : Array<number> = [1]
+
+const arr3 : t = arr2
+
+const arr : readonly number[] = [1,20]
+
+for (const ar of arr) {
+    console.log(ar);
 }
 
-type HasName = {
-    name: string;
-};
-
-type AltFamily<Parent extends HasName, Child extends HasName> = {
-    mother: Parent,
-    father:Parent,
-    child:Child
-}
-
-type Animal = {
-    name: string;
-}
-
-type Human = {
-    name : string;
-    age: number;
-}
-
-type T = AltFamily<Animal,Human>
-
+let tuple : [string,number] = ['d',0]
