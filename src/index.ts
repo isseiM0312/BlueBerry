@@ -1,25 +1,35 @@
-type FooBar = {
-    foo:string;
-    bar:number;
+type Family<Parent,Child> = {
+    mother:Parent,
+    father:Parent,
+    child:Child
 }
 
-type FooBarBaz = {
-    foo:string;
-    bar:number;
-    baz:boolean;
+//型を引数みたいにできる、高度な抽象化の際に使われる
+
+const obj : Family<number,string> = {
+    mother : 1,
+    father : 2,
+    child : ''
 }
 
-const obj : FooBarBaz = {
-    foo : 'hi',
-    bar : 4,
-    baz : true
+type HasName = {
+    name: string;
+};
+
+type AltFamily<Parent extends HasName, Child extends HasName> = {
+    mother: Parent,
+    father:Parent,
+    child:Child
 }
 
-const obj2 : FooBar = obj;
+type Animal = {
+    name: string;
+}
 
-/* const obj2 : FooBar = {
-    foo : 'hi',
-    bar : 4,
-    baz : true
-};これだとエラー出るが、型安全性に関するものではない
- */
+type Human = {
+    name : string;
+    age: number;
+}
+
+type T = AltFamily<Animal,Human>
+
