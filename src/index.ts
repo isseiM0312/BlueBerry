@@ -21,5 +21,5 @@ const obj2 : FooBar = obj;
     foo : 'hi',
     bar : 4,
     baz : true
-};これだとダメ
+};これだとエラー出るが、型安全性に関するものではない
  */
