@@ -1,17 +1,12 @@
-const obj : {
-    foo:number,
-    bar:string
-} = {
-    foo:123,
-    bar:'Hello World'
+type FooBarObj = {
+    foo : number,
+    bar : string
+};
+
+const obj : FooBarObj = {
+    foo:3,
+    bar:'d'
 }
 
-const obj2 = {
-    'oom' : 'dad',
-    'ds fdsav':12,
-    1:233
-}
-
-console.log(obj2.oom);
-console.log(obj2["ds fdsav"])
-console.log(obj2[1])
+type tt = string;
+const t : tt = 'dd';
