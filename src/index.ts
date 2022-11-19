@@ -1,12 +1,17 @@
-import { createInterface } from "readline";
+const obj : {
+    foo:number,
+    bar:string
+} = {
+    foo:123,
+    bar:'Hello World'
+}
 
-const rl = createInterface({
-    input:process.stdin,
-    output:process.stdout
-})
+const obj2 = {
+    'oom' : 'dad',
+    'ds fdsav':12,
+    1:233
+}
 
-rl.question('数値を入力してください：',(line) => {
-    const num : number = Number(line);
-    console.log(1000+num);
-    rl.close();
-})
+console.log(obj2.oom);
+console.log(obj2["ds fdsav"])
+console.log(obj2[1])
