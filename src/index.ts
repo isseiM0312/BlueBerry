@@ -1,57 +1,25 @@
-type FooBarObj = {
-    foo : number,
-    bar : string
-};
-
-const obj : FooBarObj = {
-    foo:3,
-    bar:'d'
+type FooBar = {
+    foo:string;
+    bar:number;
 }
 
-type tt = string;
-const t : tt = 'dd';
-
-type aobj = {
-    [key:string] : number
+type FooBarBaz = {
+    foo:string;
+    bar:number;
+    baz:boolean;
 }
 
-const data : aobj = {
-    'da':14
+const obj : FooBarBaz = {
+    foo : 'hi',
+    bar : 4,
+    baz : true
 }
 
-type optobj = {
-    a : string,
-    b? : string
-}
+const obj2 : FooBar = obj;
 
-const ins : optobj = {
-    a : 'd'
-}
-
-type freezed = {
-    readonly foo : string
-}
-
-try {
-    let freeze : freezed = {
-        foo : 'dfa'
-    }
-} catch (e) {
-    console.log(e)
-}
-
-const obj3 = {
-    foo: 1,//'apiとかから型のわからないデータが返ってきた時のことを考えろ',
-    bar: 'anyは使いたくないし、最初の一回とかだったら撮ってきたデータの型に応じて変更不可なかたを定義したい時あるよね',
-    hoge: 'そんな時typeofを使うんだ、typeみたいに明示的に型を決めてあげなくても、型のコピーができる、apiからのデータがある時numberでまたある時stringなら、実行するごとに',
-    fuga: '型を変えて定義してくれてかつちゃんとコンパイルエラーも出すよ あんま使うなよ型安全崩すから　最上位に値が来る時とかだけにしとけ'
-};
-
-type T = typeof obj3;
-
-const ttt : T = {
-    foo:1,
-    bar:'',
-    hoge:'',
-    fuga:''
-}
+/* const obj2 : FooBar = {
+    foo : 'hi',
+    bar : 4,
+    baz : true
+};これだとダメ
+ */
