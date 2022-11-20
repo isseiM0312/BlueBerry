@@ -1,12 +1,8 @@
-class User {
-    constructor(public name : string,public age : number) {
-
-    }
-
-    getMessage(message : string) {
-        return(`${this.name} (${this.age}) ${message}`);
+function createUser(name:string,age:number) {
+    return (message : string) : string => {
+        return `${name} (${age}) ${message}`
     }
 }
 
-const uhyo = new User('uhyo',26);
-console.log(uhyo.getMessage('ハロー'))
+const getMessage = createUser('uhyo', 24);
+console.log(getMessage('うい'));
