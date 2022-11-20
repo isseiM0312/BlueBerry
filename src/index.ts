@@ -1,18 +1,15 @@
-function getFizzBuzzString(i : number) : string {
-    let result = '';
-    if (i % 3 === 0 && i % 5 === 0) {
-        result = 'FizzBuzz';
-    } else if (i % 3 === 0) {
-        result = 'Fizz';
-    } else if (i % 5 === 0) {
-        result = 'Buzz';
-    } else {
-        result = `${i}`
-    }
-    return result;
+function map<T,U>(array: T[], callback: (i : T) =>  U) : U[] {
+ const result : U[] = [];
+ for (const elm of array) {
+    result.push(callback(elm));
+ }
+ return result;
 }
 
-for (let i = 1; i <= 100; i++) {
-    const message = getFizzBuzzString(i);
-    console.log(message);
+const data = [1,2,3,4,5,6,7,8,9]
+
+const result = map(data,(x) => x * 10);
+
+for (const elm of result) {
+    console.log(elm);
 }
