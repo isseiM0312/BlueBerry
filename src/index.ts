@@ -1,6 +1,11 @@
 class User {
+    static adminName: string = 'uhyo';
+    static getAdminUser() {
+        return new User(User.adminName,26);
+    }
+
     name : string;
-    readonly age : number;
+    age : number;
 
     constructor(name:string,age:number) {
         this.name = name;
@@ -8,10 +13,8 @@ class User {
     }
 
     isAdult(): boolean {
-        return this.age > 10;
+        return this.age >= 20;
     }
 }
 
-const uhyo = new User('uhyo',26);
-console.log(uhyo.name);
-console.log(uhyo.isAdult());
+console.log(User.adminName);
