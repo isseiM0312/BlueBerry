@@ -1,4 +1,8 @@
-class User {
+type HasName = {
+    name : string;
+}
+
+class User implements HasName {
     name:string;
     protected age:number;
 
