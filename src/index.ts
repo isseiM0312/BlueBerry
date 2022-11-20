@@ -1,9 +1,11 @@
 try {
+    console.log('エラーを発生させます！');
     throwError();
     console.log('ここも表示されない');
-} catch (err) {
-    console.log(err);
+} finally  {
+    console.log('finally');
 }
+console.log('tryから出ちゃってクラッシュ')
 
 function throwError() {
     const error = new Error('エラー');
