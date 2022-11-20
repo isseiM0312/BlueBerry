@@ -1,24 +1,23 @@
 class User {
     name:string;
-    age:number;
+    #age:number;
 
     constructor(name:string,age:number) {
         this.name = name;
-        this.age = age;
+        this.#age = age;
     }
 
     public isAdult(): boolean {
-        return this.age > 20;
+        return this.#age > 20;
     }
 
 }
 
 class PremiumUser extends User {
-    rank : number;
+    rank : number = 1;
 
-    constructor(name:string,age:number,rank:number) {
-        super(name,age);
-        this.rank = rank;
+    public override isAdult(): boolean {
+        return true;
     }
 }
 
