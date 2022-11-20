@@ -1,26 +1,14 @@
 class User {
-    name:string = "";
+    name:string = '';
     age:number = 0;
-
-    isAdult() : boolean {
-        return this.age > 20;
-    }
-
 }
 
-const uhyo: User = new User();
+type MyUserConstructor = new () => User;
 
-const john : User = {
-    name:'J',
-    age:0,
-    isAdult: () => true,
-}
+const Myuser : MyUserConstructor = User;
 
-const john2  = {
-    name:'J',
-    age:0,
-    isAdult: () => true,
-    x : undefined
-}
+//class型はnewぶち込むとインスタンスを作成するっていう関数型
 
-const john3 = john2
+const u = new Myuser();
+
+console.log(u.name,u.age)
