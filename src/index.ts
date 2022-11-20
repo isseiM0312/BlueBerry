@@ -3,12 +3,8 @@ class User {
     age:number = 0;
 }
 
-type MyUserConstructor = new () => User;
 
-const Myuser : MyUserConstructor = User;
+const uhyo = new User();
 
-//class型はnewぶち込むとインスタンスを作成するっていう関数型
+console.log(uhyo instanceof User)
 
-const u = new Myuser();
-
-console.log(u.name,u.age)
