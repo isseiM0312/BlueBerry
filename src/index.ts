@@ -1,16 +1,12 @@
-try {
-    console.log('エラーを発生させます！');
-    throwError();
-    console.log('ここも表示されない');
-} finally  {
-    console.log('finally');
-}
-console.log('tryから出ちゃってクラッシュ')
+class User {
+    constructor(public name : string,public age : number) {
 
-function throwError() {
-    const error = new Error('エラー');
-    throw error;
-    console.log('こいつも表示されない')
+    }
+
+    getMessage(message : string) {
+        return(`${this.name} (${this.age}) ${message}`);
+    }
 }
 
-//finallyはtryのみのブロック(これだと脱出される)の前に割り込める。なおreturnでもいける。
+const uhyo = new User('uhyo',26);
+console.log(uhyo.getMessage('ハロー'))
