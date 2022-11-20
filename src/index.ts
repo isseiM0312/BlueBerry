@@ -1,14 +1,13 @@
-const User = class {
-    name : string;
-    age: number;
+class User {
+    name:string;
+    #age:number;
 
-    constructor(name:string,age:number) {
+    constructor(name:string, age:number) {
         this.name = name;
-        this.age = age;
+        this.#age = age;
     }
 
     public isAdult(): boolean {
-        return this.age >= 20;
+        return this.#age > 20;
     }
-};
-
+}
