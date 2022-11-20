@@ -1,18 +1,26 @@
-class User<T> {
-    name:string;
-    #age:number;
-    readonly data: T;
+class User {
+    name:string = "";
+    age:number = 0;
 
-    constructor(name: string, age:number, data:T) {
-        this.name = name;
-        this.#age = age;
-        this.data = data;
-    }
-
-    public isAdult(): boolean {
-        return this.#age >= 20;
+    isAdult() : boolean {
+        return this.age > 20;
     }
 
 }
 
-const join = new User<{num:number}>('John',15,{num:14})
+const uhyo: User = new User();
+
+const john : User = {
+    name:'J',
+    age:0,
+    isAdult: () => true,
+}
+
+const john2  = {
+    name:'J',
+    age:0,
+    isAdult: () => true,
+    x : undefined
+}
+
+const john3 = john2
