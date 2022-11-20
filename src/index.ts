@@ -1,8 +1,17 @@
-function createUser(name:string,age:number) {
-    return (message : string) : string => {
-        return `${name} (${age}) ${message}`
-    }
+type Animal = {
+    species : string
 }
 
-const getMessage = createUser('uhyo', 24);
-console.log(getMessage('うい'));
+type Human = {
+    name : string
+}
+
+type User = Animal | Human
+
+const tama : User = {
+    species : 'cat'
+}
+
+const uhyo : User = {
+    name : 'uhyo'
+}
