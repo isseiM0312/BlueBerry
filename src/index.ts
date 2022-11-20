@@ -1,34 +1,14 @@
-type Animal = {
-    species : string;
-    age: number;
+type Human = { name : string }
+type Animal = { species : string }
+function getName(human : Human) {
+    return human.name;
 }
 
-type Human = Animal & {
-    name : string;
+function getSpecies(animal : Animal) {
+    return animal.species;
 }
 
-type User = Animal | Human
+const mysteryFunc = Math.random() < 0.5 ? getName : getSpecies;
 
-const tama : User = {
-    species : 'cat',
-    age : 6
-}
-
-const uhyo : User = {
-    species : '',
-    name : 'uhyo',
-    age:26,
-}
-
-function showAge(user: User) {
-    const age = user.age; 
-    console.log(age);
-}
-
-//インターセクション型で作った方は大体部分型になる（より厳しく情報を求められるから)
-
-type crazy = number & string
-//異なるプリミティブ同士でやるとnevernになる。
-
-type lesscrazy = Animal & string
-//オブジェクトとプリミティブは、プリミティブがオブジェクトっぽい動き(例えばstring.lengh)とかするかもなので即neverではない。
+//このmysteryFuncを呼び出すときに渡す値は、Human & Animal型
+//考えてみれば簡単で、nameもspeciesも持ってるオブジェクトを渡してあげればそれは部分型なのでどっちにも入れられる。
