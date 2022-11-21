@@ -4,23 +4,29 @@ type Human = {
     age : number;
 }
 
-//T<S>みたいに型を渡せるのがlookup型
+type HumanKeys = keyof Human;
 
-function setAge(human: Human, age : Human['age']) {
-    return(
-        {
-            ...human,
-            age
-        }
-    )
+let key: HumanKeys = 'name';
+key = 'age';
+key = 'type';
+//keyofの効果はオブジェクトのプロパティ名のリテラルのユニオン型をとるってやつ。
+//keyはHumanのプロパティのリテラルのユニオン型、つまり 'type' | 'age' | 'name'
+//型レベル計算の第一歩！
+
+const mmConversionTable = {
+    mm: 1,
+    m: 1e3,
+    km: 1e6,
+    kkm : 1e9//こんなふうに変なやつ追加しても大丈夫。
+    //ここの値に過不足のない型定義ができる！！
 }
 
-const uhyo: Human = {
-    type:'human',
-    name:'uhyo',
-    age:26
+function convertUnits(value: number, unit: keyof typeof mmConversionTable) {
+    const mmValue = value * mmConversionTable[unit]
+    return {
+        mm: mmValue,
+        m : mmValue / 1e3,
+        km : mmValue / 1e6
+    }
 }
-
-const uhyo2 = setAge(uhyo,27)
-
-//lookup型で型を再利用できる！
+//keyof typeof オブジェクト　でオブジェクトのプロパティ名をすべて許容するユニオン型を生成できる。
