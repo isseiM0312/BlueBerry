@@ -1,10 +1,7 @@
-//as const は味方！
+//最恐のany
+//as や　ユーザー定義型ガードと違って、マジで型定義をぶっ壊すやつ
+//JSからの移行やJSにしかできない自由な記述を再現するためのもの
+//as や　ユーザー定義ガードを使い、普段は使わないこと!
 
-const name1 = ['uhyo','John','Taro'];
-//const name1: string[]
-
-const name2 = ['uhyo','John','Taro'] as const;
-//const name2: readonly ["uhyo", "John", "Taro"]
-
-//データから型きめる形！
-type Names = (typeof name2)[number];
+//unkownはほぼanyだが使う時にできることが非常に限られる
+//any.lengthとかやったら小パイルエラーに引っ掛けれないが、unkownでは引っ掛けられる！
