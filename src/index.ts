@@ -1,32 +1,34 @@
+function get<T, K extends keyof T>(obj : T, key : K) : T[K] {
+    return obj[key];
+}
+
+//これとんでもない。
+//Tにオブジェクトをわたすと、KにTに入れたオブジェクトのプロパティしか入れられなくなる。
+
 type Human = {
-    type : 'human';
-    name : string;
-    age : number;
+    name: string
+    age: number
 }
 
-type HumanKeys = keyof Human;
-
-let key: HumanKeys = 'name';
-key = 'age';
-key = 'type';
-//keyofの効果はオブジェクトのプロパティ名のリテラルのユニオン型をとるってやつ。
-//keyはHumanのプロパティのリテラルのユニオン型、つまり 'type' | 'age' | 'name'
-//型レベル計算の第一歩！
-
-const mmConversionTable = {
-    mm: 1,
-    m: 1e3,
-    km: 1e6,
-    kkm : 1e9//こんなふうに変なやつ追加しても大丈夫。
-    //ここの値に過不足のない型定義ができる！！
+type Animal = {
+    species: string;
+    age: number
 }
 
-function convertUnits(value: number, unit: keyof typeof mmConversionTable) {
-    const mmValue = value * mmConversionTable[unit]
-    return {
-        mm: mmValue,
-        m : mmValue / 1e3,
-        km : mmValue / 1e6
-    }
+const uhyo: Human = {
+    name: 'uhyo',
+    age: 26
 }
-//keyof typeof オブジェクト　でオブジェクトのプロパティ名をすべて許容するユニオン型を生成できる。
+
+const cat: Animal = {
+    species: 'cat',
+    age: 4
+}
+
+const uhyoName = get(uhyo,'name')
+//function get<Human, "name">(obj: Human, key: "name"): string
+const catSpecies = get(cat,'species')
+//function get<Animal, "species">(obj: Animal, key: "species"): string
+
+//keyofの強いとこ！　extends keyof K をとるとTに実際に値がが入ってくるまでTの型はわからなくても
+//T[K]っていうlookupの形が取れる！
