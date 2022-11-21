@@ -1,37 +1,23 @@
-function get<T, K extends keyof T>(obj : T, key : K) : T[K] {
-    return obj[key];
-}
+//as はTSでは基本的に使うべきじゃない！
+//typeof は typeof 変数　=== 型　じゃないと型の絞り込みを自動で行なってくれない。
+//上以外のタイミングで人間には明らかに型決まってるやん！て時に
+//TSの型予測システムを覆して処理書く時に使う
 
-//これとんでもない。
-//Tにオブジェクトをわたすと、KにTに入れたオブジェクトのプロパティしか入れられなくなる。
+type Animal  = {
+    tag : 'animal',
+    species : 'string' 
+}
 
 type Human = {
-    name: string
-    age: number
+    tag : 'human',
+    name : string
 }
 
-type Animal = {
-    species: string;
-    age: number
+type User = Animal | Human;
+
+function getNamesIfAllHuman(users:readonly User[]): string[] | undefined {
+    if (users.every(user => user.tag === 'human')) {
+        return (users as Human[]).map(user => user.name);
+    }
+    return undefined;
 }
-
-const uhyo: Human = {
-    name: 'uhyo',
-    age: 26
-}
-
-const cat: Animal = {
-    species: 'cat',
-    age: 4
-}
-
-const uhyoName = get(uhyo,'name')
-//function get<Human, "name">(obj: Human, key: "name"): string
-const catSpecies = get(cat,'species')
-//function get<Animal, "species">(obj: Animal, key: "species"): string
-
-//keyofの強いとこ！　extends keyof K をとるとTに実際に値がが入ってくるまでTの型はわからなくても
-//T[K]っていうlookupの形が取れる！
-
-//プロパティ名が数値の時は型の話では数値になるけど別に文字列で読んでもいい
-//ただkeyofした時に必ずしも文字列が返ってくるとは限らない。
