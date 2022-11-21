@@ -1,37 +1,13 @@
-type Human = {
-    name : string;
-    age? : number;
-};
 
-const uhyo : Human = {
-    name : 'uhyo',
-    age : 25
-}
+const hoge : FooString = 'foo'
+//const hoge : FooString = 'foos > これだとエラー'
 
-const john : Human = {
-    name : 'john',
-    age : undefined
-}
+type FooString = 'foo';
 
-type Human2 = {
-    name : string;
-    age : number | undefined;
-};
+type one = 1;
 
-const uhyo2 : Human2 = {
-    name : 'jon',
-    age : undefined //Human2だとこれがないとエラー
-}
+type t = true;
 
-function userMabyeHuman(human : Human | undefined) {
-    const age = human?.age;
-    console.log(age);
-}
+type three = 3n;
 
-userMabyeHuman(undefined)
-
-type GetTimeFunc  = () => Date;
-
-function useTime(getTimeFunc : GetTimeFunc | undefined) {
-    const timeStringOrUndefined = getTimeFunc?.().toString();
-}
+//リテラル型は4種類ある
