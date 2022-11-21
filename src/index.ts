@@ -1,14 +1,14 @@
-type Human = { name : string }
-type Animal = { species : string }
-function getName(human : Human) {
-    return human.name;
+type Human = {
+    name : string;
+    age? : number;
+};
+
+const uhyo : Human = {
+    name : 'uhyo',
+    age : 25
 }
 
-function getSpecies(animal : Animal) {
-    return animal.species;
+const john : Human = {
+    name : 'john',
+    age : undefined
 }
-
-const mysteryFunc = Math.random() < 0.5 ? getName : getSpecies;
-
-//このmysteryFuncを呼び出すときに渡す値は、Human & Animal型
-//考えてみれば簡単で、nameもspeciesも持ってるオブジェクトを渡してあげればそれは部分型なのでどっちにも入れられる。
