@@ -1,3 +1,12 @@
-type NumberAndStrings = [number,...string[]]
+type Fruit = 'apple' | 'orange' | 'strawberry';
 
-type NumberStringNumber = [number,...string[],number]
+type FruitArrays = {
+    [P in Fruit]: P[]
+}
+
+const numbers: FruitArrays = {
+    apple:['apple'],
+    orange:['orange','orange'],
+    strawberry:[]
+}
+
