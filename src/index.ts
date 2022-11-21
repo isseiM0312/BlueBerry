@@ -29,3 +29,9 @@ function userMabyeHuman(human : Human | undefined) {
 }
 
 userMabyeHuman(undefined)
+
+type GetTimeFunc  = () => Date;
+
+function useTime(getTimeFunc : GetTimeFunc | undefined) {
+    const timeStringOrUndefined = getTimeFunc?.().toString();
+}
