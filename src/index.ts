@@ -22,3 +22,10 @@ const uhyo2 : Human2 = {
     name : 'jon',
     age : undefined //Human2だとこれがないとエラー
 }
+
+function userMabyeHuman(human : Human | undefined) {
+    const age = human?.age;
+    console.log(age);
+}
+
+userMabyeHuman(undefined)
