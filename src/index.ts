@@ -4,7 +4,7 @@ type HasToString = {
 //HasToStringの型制限は、toStringっていうstring型を返すメソッドを持ってるオブジェクトってだけで、
 //実はnumberとかのprimitive型もtoString持ってる
 
-function useToString1(value: HasToString) {
+function useToString1(value: HasToString & object) {
     console.log(`value is ${value.toString()}`)
 }
 
@@ -14,4 +14,5 @@ useToString1({
     }
 })
 
-useToString1(2)
+//useToString1(2)
+//&objectつけるとエラー出る
