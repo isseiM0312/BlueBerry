@@ -32,3 +32,6 @@ const catSpecies = get(cat,'species')
 
 //keyofの強いとこ！　extends keyof K をとるとTに実際に値がが入ってくるまでTの型はわからなくても
 //T[K]っていうlookupの形が取れる！
+
+//プロパティ名が数値の時は型の話では数値になるけど別に文字列で読んでもいい
+//ただkeyofした時に必ずしも文字列が返ってくるとは限らない。
