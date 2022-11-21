@@ -9,3 +9,7 @@ const uhyo3 = {
     name : 'uhyo', //(property) name: string オブジェクト型はconstでも中身変えられるのでwindingが起こる
     age : 26
 }
+//windingは文脈の効果を受ける
+
+let uhyo4: 'uhyo' = 'uhyo';
+//プログラマが明確に宣言すればwindingされない
