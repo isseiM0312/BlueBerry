@@ -12,3 +12,13 @@ const john : Human = {
     name : 'john',
     age : undefined
 }
+
+type Human2 = {
+    name : string;
+    age : number | undefined;
+};
+
+const uhyo2 : Human2 = {
+    name : 'jon',
+    age : undefined //Human2だとこれがないとエラー
+}
