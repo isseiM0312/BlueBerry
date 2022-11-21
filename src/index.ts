@@ -1,7 +1,17 @@
-//最恐のany
-//as や　ユーザー定義型ガードと違って、マジで型定義をぶっ壊すやつ
-//JSからの移行やJSにしかできない自由な記述を再現するためのもの
-//as や　ユーザー定義ガードを使い、普段は使わないこと!
+type HasToString = {
+    toString: () => string;
+}
+//HasToStringの型制限は、toStringっていうstring型を返すメソッドを持ってるオブジェクトってだけで、
+//実はnumberとかのprimitive型もtoString持ってる
 
-//unkownはほぼanyだが使う時にできることが非常に限られる
-//any.lengthとかやったら小パイルエラーに引っ掛けれないが、unkownでは引っ掛けられる！
+function useToString1(value: HasToString) {
+    console.log(`value is ${value.toString()}`)
+}
+
+useToString1({
+    toString() {
+        return 'fsg'
+    }
+})
+
+useToString1(2)
