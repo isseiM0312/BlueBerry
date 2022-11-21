@@ -1,30 +1,6 @@
+type uhyo = 'uhyo';
 
-const hoge : FooString = 'foo'
-//const hoge : FooString = 'foos > これだとエラー'
+const uhyo1 = 'uhyo';
 
-type FooString = 'foo';
-
-type one = 1;
-
-type t = true;
-
-type three = 3n;
-
-//リテラル型は4種類ある
-
-function getHelloStr() : `Hello ${string}!` {
-    const rand = Math.random();
-    if (rand < 0.3) {
-        return 'Hello World!';
-    } else {
-        return 'Hello World!'
-        //return 'Hello Worldq'
-    }
-}
-
-function signNumber(type  : 'plus' | 'minus') {
-    return type === 'plus' ? 1 : -1;
-}
-
-console.log(signNumber('plus'));
-console.log(signNumber('minus'));
+let uhyo2 = 'uhyo';
+//let uhyo2: string 再代入が期待されるため、stringに拡張される、これをwindingという
